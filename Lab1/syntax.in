@@ -1,0 +1,31 @@
+Syntax:
+The words - predefined tokens are specified between " and ":
+
+<program> ::= "@" <cmpdstmt> "@"
+<cmpdstmt> ::= <declaration_list> <stmt_list>
+<declaration_list> ::= <declaration> | <declaration> <declaration_list>
+<declaration> ::= <type> <identifier_list> ";" | <type> <assignment_stmt> ";"
+<type> ::= "integer" | "string"
+<identifier_list> ::= <identifier> | <identifier> "[" <noconst> "]" ")" | <identifier> "," <identifier_list> 
+<stmt_list> ::= <stmt> | <stmt> <stmt_list>
+<stmt> ::= <read_stmt> | <write_stmt> | <if_stmt> | <for_stmt> | <while_stmt> | <assignment_stmt>
+<read_stmt> ::= "read" "(" <identifier_list> ")" ";"
+<write_stmt> ::= "write" "(" <identifier_list> | <identifier_list> "'" <stringconst> "'" |  "'" <stringconst> "'"  ")" ";" 
+<if_stmt> ::= "if" <condition> ":" "{" <stmt_list> "}" "else" ":" "{" <stmt_list> "}" |  "if" <condition> ":" "{" <stmt_list> "}"
+<for_stmt> ::= "for" <identifier> "in" "range" <range_exp> ":" "{" <stmt_list> "}"
+<range_expr> ::= "(" <expression> "," <expression> ")" | "(" <expression> "," <expression> "," <no> ")"
+<while_stmt> ::= "while" <condition> ":" "{" <stmt_list> "}"
+<assignment_stmt> ::= <identifier> "=" <expression> ";"
+<condition> ::= <expression> <operator> <expression> | <condition> <operator> <condition>
+<operator> ::= "<" | "<=" | ">" | ">=" | "=" | "is" | "and" | "or"
+<expression> ::= <term> | <expression> "+" <term> | <expression> "-" <term> 
+<term> ::= <factor> | <term> "*" <factor> | <term> "/" <factor> | <term> "%" <factor>
+<factor> ::= <identifier_list> | <noconst> | <stringconst> | "(" <expression> ")"
+<identifier> ::= <letter> | <identifier> <underline> <identifier> | <identifier> <letter> | <identifier> <digit>
+<letter> ::= "A" | "B" | ...| "Z" | "a" | "b" | ... | "z"
+<digit> ::= "0" | "1" |...| "9"
+<underline> ::= "_"
+<noconst> ::= "+" <no> | "-" <no> | <no>
+<no> ::= <digit> <no> | <digit>
+<stringconst> ::= <char> | <char> <string>
+<char> ::= <letter> | <digit>
