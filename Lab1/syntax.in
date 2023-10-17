@@ -6,7 +6,7 @@ The words - predefined tokens are specified between " and ":
 <declaration_list> ::= <declaration> | <declaration> <declaration_list>
 <declaration> ::= <type> <identifier_list> ";" | <type> <assignment_stmt> ";"
 <type> ::= "integer" | "string"
-<identifier_list> ::= <identifier> | <identifier> "[" <noconst> "]" ")" | <identifier> "," <identifier_list> 
+<identifier_list> ::= <identifier> | <identifier> "[" <noconst> "]" | <identifier> "," <identifier_list> 
 <stmt_list> ::= <stmt> | <stmt> <stmt_list>
 <stmt> ::= <read_stmt> | <write_stmt> | <if_stmt> | <for_stmt> | <while_stmt> | <assignment_stmt>
 <read_stmt> ::= "read" "(" <identifier_list> ")" ";"
@@ -26,6 +26,7 @@ The words - predefined tokens are specified between " and ":
 <digit> ::= "0" | "1" |...| "9"
 <underline> ::= "_"
 <noconst> ::= "+" <no> | "-" <no> | <no>
-<no> ::= <digit> <no> | <digit>
+<no> ::= <start_digit> <no> | <digit>
+<start_digit> = "1" |...| "9"
 <stringconst> ::= <char> | <char> <string>
 <char> ::= <letter> | <digit>
