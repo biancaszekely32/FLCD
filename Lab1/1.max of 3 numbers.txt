@@ -1,0 +1,21 @@
+1.max of 3 numbers
+@
+integer a,b,c;
+integer max;
+read(a,b,c);
+if a > b:
+{
+max=a;
+}
+else:
+{
+max=b;
+}
+if c > max:
+{
+max=c;
+}
+write(max);
+@
+
+
