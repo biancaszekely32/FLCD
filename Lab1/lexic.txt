@@ -1,0 +1,31 @@
+Specification:
+	
+Alphabet:
+	a. Upper (A-Z) and lower case letters (a-z) of the English alphabet;
+	b. Decimal digits (0-9);
+	c. Underline character '_';
+
+Lexic:
+	a.Special symbols, representing:
+		-operators + - * / % < > <= >= = and or is
+		-separators [ ] ( ) { } : ; , space @ ' newline
+		-reserved words integer string if else read write for in range while
+	b.Identifiers: 
+		-a sequence of letters and  digits, such that the first character is a letter; the rule is:
+
+		<identifier> ::= <letter> | <identifier> <underline> <identifier> | <identifier> <letter> | <identifier> <digit>
+		<letter> ::= "A" | "B" | ...| "Z" | "a" | "b" | ... | "z"
+		<digit> ::= "0" | "1" |...| "9"
+		<underline> ::= "_"
+	
+	c.Constants:
+		1.integer:			
+			<noconst> ::= "+" <no> | "-" <no> | <no>
+			<no> ::= <start_digit> <no> | <digit>
+			<start_digit> = "1" |...| "9"
+
+		3.string
+      			<stringconst> ::= <char> | <char> <string>
+      			<char> ::= <letter> | <digit>
+
+	
