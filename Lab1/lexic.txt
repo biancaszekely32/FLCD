@@ -21,7 +21,8 @@ Lexic:
 	c.Constants:
 		1.integer:			
 			<noconst> ::= "+" <no> | "-" <no> | <no>
-			<no> ::= <digit> <no> | <digit>
+			<no> ::= <start_digit> <no> | <digit>
+			<start_digit> = "1" |...| "9"
 
 		3.string
       			<stringconst> ::= <char> | <char> <string>
