@@ -1,0 +1,92 @@
+@startuml
+
+class ProgramInternalForm {
+  - pif: List<Pair<String, Pair<Integer, Integer>>>
+  - operators: List<String>
+  - separators: List<String>
+  - reservedWords: List<String>
+  - tokens: HashMap<String, Integer>
+  + ProgramInternalForm()
+  + loadListOfTokens()
+  + getCode(String token): Integer
+  + isOperator(String token): boolean
+  + isPartOfOperator(char op): boolean
+  + isSeparator(String token): boolean
+  + isReservedWord(String token): boolean
+  + isIdentifier(String token): boolean
+  + isIntegerConstant(String token): boolean
+  + addToPif(String token, Pair<Integer, Integer> codes): void
+  + toString(): String
+}
+
+class HashTable<T> {
+  - size: Integer
+  - table: ArrayList<ArrayList<T>>
+  + HashTable(Integer size)
+  + hash(T key): Integer
+  + getSize(): Integer
+  + findPosOfKey(T key): Pair<Integer, Integer>
+  + put(T key): boolean
+  + get(Pair<Integer, Integer> key): T
+  + getByPos(int pos): T
+  + displayTable(): String
+}
+
+class Pair<T,U> {
+  - pos: T
+  - symbol: U
+  + Pair(T pos, U symbol)
+  + getPos(): T
+  + getSymbol(): U
+  + setPos(T pos): T
+  + setSymbol(U symbol): U
+  + toString(): String
+}
+
+
+class SymbolTableInteger {
+  - hashTable: HashTable<Integer>
+  + SymbolTableInteger(Integer size)
+  + addSymbolInteger(Integer symbol): boolean
+  + getSymbolPosition(Integer symbol): Integer
+  + getSymbol(Pair position): Integer
+  + getSymbolByPos(int position): Integer
+  + displayTable(): String
+}
+
+class SymbolTableString {
+  - hashTable: HashTable<String>
+  + SymbolTableString(Integer size)
+  + addSymbolString(String symbol): boolean
+  + getSymbolPosition(String symbol): Integer
+  + getSymbol(Pair position): String
+  + getSymbolByPos(int position): String
+  + displayTable(): String
+}
+
+class Analyzer {
+  - filename: String
+  - language: Language
+  - symbolTableString: SymbolTableString
+  - symbolTableInteger: SymbolTableInteger
+  - pif: ProgramInternalForm
+  + Analyzer(String filename)
+  - analyze(): void
+  + identifyStringConstant(String line, int index): String
+  + identifyOperator(String line, int index): String
+  + identifyToken(String line, int index): String
+  - buildTables(List<Pair<String, Integer>> tokensWithLine): void
+  - writeResults(): void
+  - deleteIfExists(String filename): void
+}
+
+
+HashTable --|> Pair
+ProgramInternalForm --|> Pair
+SymbolTableInteger --|> HashTable
+SymbolTableString --|> HashTable
+Analyzer --|> SymbolTableString
+Analyzer --|> SymbolTableInteger
+Analyzer --|> ProgramInternalForm
+
+@enduml
