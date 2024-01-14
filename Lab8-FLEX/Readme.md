@@ -1,3 +1,3 @@
 How to run: 
-flex lang.lxi
-gcc lex.yy.c
+\nflex lang.lxi
+\ngcc lex.yy.c
